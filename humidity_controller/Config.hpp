@@ -1,0 +1,36 @@
+#ifndef Config_HPP_
+#define Config_HPP_
+
+#define CLIMATE_DEBUG
+
+
+#define DISPLAY_RS_PIN 8
+#define DISPLAY_ENABLE_PIN 9
+#define DISPLAY_D0_PIN 4
+#define DISPLAY_D1_PIN 5
+#define DISPLAY_D2_PIN 6
+#define DISPLAY_D3_PIN 7
+
+
+
+
+
+
+
+#define BUTTON_SELECT_PIN 13
+#define BUTTON_MINUS_PIN A0
+#define BUTTON_PLUS_PIN A1
+
+#define DISPLAY_CS_PIN 2
+#define DISPLAY_CLK_PIN 3
+#define DISPLAY_DATA_PIN 4
+
+#define HUMIDIFICATION_RELAY_PIN 5
+
+#define TARGET_HUMIDITY_EEPROM_ADR 1
+
+#define MIN_TARGET_HUMIDITY 20
+#define MAX_TARGET_HUMIDITY 99
+#define HUMIDITY_GISTERIS 2
+
+#endif
