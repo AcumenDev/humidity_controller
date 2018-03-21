@@ -12,7 +12,7 @@ Monitoring *monitoring;
 
 void setup() {
 	Serial.begin(9600);
-	values.loadFromEEprom();
+	//values.loadFromEEprom();
 	thSensors = new THSensors(5000);
 	display = new Display(DISPLAY_RS_PIN, DISPLAY_ENABLE_PIN, DISPLAY_D0_PIN,
 	DISPLAY_D1_PIN, DISPLAY_D2_PIN, DISPLAY_D3_PIN, 100, 2500);

@@ -9,13 +9,13 @@ THSensors::THSensors(int interval) :
 }
 
 void THSensors::work(Values *values, unsigned long currentMillis) {
-	values->dryT = ds->getTempC(drySensor);
+	values->temperature.value = ds->getTempC(drySensor);
 	values->wetT = ds->getTempC(wetSensor);
 
-	values->humDyn = PsychrometricAlgorithm::computeHumidity(values->dryT,
+	values->humidity.value = PsychrometricAlgorithm::computeHumidity(values->temperature.value,
 			values->wetT);
-	values->humStat = PsychrometricAlgorithmStatic::computeHumidity(
-			values->dryT, values->wetT);
+//	values->humStat = PsychrometricAlgorithmStatic::computeHumidity(
+//			values->dryT, values->wetT);
 
 }
 

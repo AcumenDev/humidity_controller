@@ -36,6 +36,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/humidity_controller/libraries/SPI/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/humidity_controller/libraries/Wire}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/humidity_controller/libraries/Wire/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/humidity_controller/libraries/PID}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.cpp.sketch.input.1510911384" name="CPP source files" superClass="io.sloeber.compiler.cpp.sketch.input"/>
 							</tool>
@@ -58,6 +59,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/humidity_controller/libraries/SPI/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/humidity_controller/libraries/Wire}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/humidity_controller/libraries/Wire/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/humidity_controller/libraries/PID}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.c.sketch.input.576049890" name="C Source Files" superClass="io.sloeber.compiler.c.sketch.input"/>
 							</tool>
@@ -80,6 +82,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/humidity_controller/libraries/SPI/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/humidity_controller/libraries/Wire}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/humidity_controller/libraries/Wire/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/humidity_controller/libraries/PID}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.S.sketch.input.72459690" name="Assembly source files" superClass="io.sloeber.compiler.S.sketch.input"/>
 							</tool>

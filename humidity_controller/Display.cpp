@@ -26,10 +26,10 @@ void Display::update(Values *values, unsigned long currentMillis) {
 void Display::render(Values *values) {
 	lcd->setCursor(0, 0);
 	lcd->print(" Temp: ");
-	lcd->print(values->dryT);
+	lcd->print(values->temperature.value);
 	lcd->println(" C   ");
 	lcd->setCursor(0, 1);
 	lcd->print("Humidity: ");
-	lcd->print(values->humDyn);
+	lcd->print(values->humidity.value);
 	lcd->println(" %    ");
 }

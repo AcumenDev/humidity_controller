@@ -82,6 +82,11 @@
 			<location>/home/vst/Arduino/libraries/OneWire</location>
 		</link>
 		<link>
+			<name>libraries/PID</name>
+			<type>2</type>
+			<location>/home/vst/Arduino/libraries/PID</location>
+		</link>
+		<link>
 			<name>libraries/SPI</name>
 			<type>2</type>
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.6.21/libraries/SPI</locationURI>
