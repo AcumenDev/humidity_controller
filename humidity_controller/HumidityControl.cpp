@@ -1,15 +1,19 @@
 #include "HumidityControl.hpp"
 
-HumidityControl::HumidityControl(int interval) :
+HumidityControl::HumidityControl(Relays *relays, int interval) :
 		IntervalWorkerBase(interval) {
+	this->relays = relays;
 }
 
 void HumidityControl::work(Values *values, unsigned long millis) {
-	Value * value = &(values->humidity);
+	Value * value = values->getClimatVal(HUMIDITY);
 
-	if (value->value >= value->target + value->gisteris) {
-		value->active = false;
+	if (value->getCurrent() >= value->getTarget() + value->getGisteris()) {
+		value->setActive(false);
+
 	} else {
-		value->active = value->value < value->target - value->gisteris;
+		value->setActive(value->getCurrent() < value->getTarget() - value->getGisteris());
 	}
+
+	relays->humidification(value->getActive());
 }

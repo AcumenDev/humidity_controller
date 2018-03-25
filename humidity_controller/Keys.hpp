@@ -8,17 +8,12 @@
 #include "DebugUtils.hpp"
 
 class Keys {
-
-    uint8_t buttonSelectPin;
-    uint8_t buttonMinusPin;
-    uint8_t buttonPlusPin;
-
-    Button *buttonSelect;
-    Button *buttonPlus;
-    Button *buttonMinus;
+	Button *buttonSelect;
+	Button *buttonPlus;
+	Button *buttonMinus;
 public:
-    Keys(uint8_t buttonSelectPin, uint8_t buttonMinusPin, uint8_t buttonPlusPin);
-    void update(Values *values, unsigned long currentMillis);
+	Keys(uint8_t keysPin);
+	void update(Values *values, unsigned long currentMillis);
 };
 
 #endif

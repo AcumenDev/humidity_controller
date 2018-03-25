@@ -1,44 +1,47 @@
 #include "Button.hpp"
 
-Button::Button(byte buttonPin) {
-    this->buttonPin = buttonPin;
+Button::Button(uint8_t buttonPin) {
+	this->buttonPin = buttonPin;
+}
 
-    lastDebounceTime = 0;
-    debounceDelay = 50;
+Button::Button(uint8_t buttonPin, uint8_t minVal, uint8_t maxVal) {
+	this->buttonPin = buttonPin;
+	this->minVal = minVal;
+	this->maxVal = maxVal;
+	this->analog = true;
+}
 
-    buttonState = false;
-    lastButtonState = LOW;
-    readPresed = false;
+bool Button::readKey() {
+	if (analog) {
+		int analogValue = analogRead(buttonPin);
+		return analogValue > minVal && analogValue < maxVal;
+	} else {
+		return (bool) digitalRead(buttonPin);
+	}
 }
 
 void Button::update(unsigned long currentMillis) {
-    bool reading = (bool) digitalRead(buttonPin);
+	bool reading = readKey();
 
-    if (readPresed) {
-        if (reading == LOW) {
-            return;
-        }
-        readPresed = false;
-    }
+	if (reading != lastButtonState) {
+		lastDebounceTime = millis();
+	}
 
-    if (reading != lastButtonState) {
-        lastDebounceTime = millis();
-    }
-    if (lastDebounceTime != 0) {
-        if ((currentMillis - lastDebounceTime) > debounceDelay) {
-            buttonState = reading == LOW;
-            lastDebounceTime = 0;
-        }
-    }
-    lastButtonState = reading;
+	if ((millis() - lastDebounceTime) > debounceDelay) {
+		buttonState = reading;
+		lastDebounceTime = 0;
+		readPresed = false;
+	}
+
+	lastButtonState = reading;
 
 }
 
 bool Button::isPressed() {
-    if (buttonState) {
-        readPresed = true;
-        buttonState = false;
-        return true;
-    }
-    return buttonState;
+	if (buttonState) {
+		readPresed = true;
+		buttonState = false;
+		return true;
+	}
+	return buttonState;
 }

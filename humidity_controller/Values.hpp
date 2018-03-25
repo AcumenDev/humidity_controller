@@ -6,16 +6,25 @@
 #include "Config.hpp"
 #include "EEPROMUtils.hpp"
 
+enum TYPE_CLIMATE_VALUE {
+	TEMPERATURE = 0, HUMIDITY = 1
+};
+
 class Values {
 public:
-	unsigned long changeTimeStamp = 0;
-	bool changed = false;
+	Values() {
+		climateValues[TYPE_CLIMATE_VALUE::TEMPERATURE] = new Value(
+		MIN_TARGET_TEMPERATURE, MAX_TARGET_TEMPERATURE,
+		TEMPERATURE_GISTERIS);
+		climateValues[TYPE_CLIMATE_VALUE::HUMIDITY] = new Value(
+		MIN_TARGET_HUMIDITY, MAX_TARGET_HUMIDITY,
+		HUMIDITY_GISTERIS);
+	}
+	unsigned long changeTimeStamp = 0;bool changed = false;
 
 	unsigned int changeDelay = 1500;
 
-
-	Value temperature;
-	Value humidity;
+	Value *climateValues[2];
 
 	float wetT;
 //
@@ -35,6 +44,10 @@ public:
 //		}
 //	}
 
+	Value *getClimatVal(TYPE_CLIMATE_VALUE climateValue) {
+		return climateValues[climateValue];
+	}
+
 	bool isAfterChange(unsigned long currentMillis) {
 		return currentMillis - changeTimeStamp < changeDelay;
 	}
@@ -45,7 +58,7 @@ public:
 		}
 
 		if (currentMillis - changeTimeStamp > changeDelay) {
-		//	saveToEEprom();
+			//	saveToEEprom();
 			changed = false;
 		}
 	}

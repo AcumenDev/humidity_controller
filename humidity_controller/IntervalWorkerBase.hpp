@@ -5,20 +5,21 @@
 #include "Values.hpp"
 
 class IntervalWorkerBase {
-
-    unsigned long _prev_ms = 0;
-    int _interval = 0;
+private:
+	unsigned long _prev_ms = 0;
+	int _interval = 0;
 
 public:
-    IntervalWorkerBase(int interval);
+	IntervalWorkerBase(int interval);
 
-    virtual void work(Values *values, unsigned long currentMillis) {};
+	virtual void work(Values *values, unsigned long currentMillis) {
+	}
 
-    bool isWorkTime(unsigned long currentMillis);
+	bool isWorkTime(unsigned long currentMillis);
 
-    bool isWorkTime(unsigned long currentMillis, int interval);
+	bool isWorkTime(unsigned long currentMillis, int interval);
 
-    virtual void update(Values *values, unsigned long currentMillis);
+	virtual void update(Values *values, unsigned long currentMillis);
 };
 
 #endif

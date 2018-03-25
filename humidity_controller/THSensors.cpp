@@ -1,24 +1,27 @@
 #include "THSensors.hpp"
 
-THSensors::THSensors(int interval) :
+THSensors::THSensors(uint8_t * wetSensorAdr, uint8_t * drySensorAdr,
+		uint8_t pin, int interval) :
 		IntervalWorkerBase(interval) {
-	oneWire = new OneWire(A1); // вход датчиков 18b20 (a 4.7K resistor is necessary)
+
+	this->wetSensorAdr = wetSensorAdr;
+	this->drySensorAdr = drySensorAdr;
+	oneWire = new OneWire(pin);
 	ds = new DallasTemperature(oneWire);
 	ds->begin();
 	searchSensors();
 }
 
 void THSensors::work(Values *values, unsigned long currentMillis) {
-	values->temperature.value = ds->getTempC(drySensor);
-	values->wetT = ds->getTempC(wetSensor);
+	ds->requestTemperatures();
+	values->getClimatVal(TEMPERATURE)->setCurrent(ds->getTempC(drySensorAdr));
+	values->wetT = ds->getTempC(wetSensorAdr);
+	/*DEBUG_PRINT("-");
+	Serial.println(ds->getTempC(wetSensorAdr));
+	Serial.println(ds->getTempC(drySensorAdr));*/
 
-	values->humidity.value = PsychrometricAlgorithm::computeHumidity(values->temperature.value,
-			values->wetT);
-//	values->humStat = PsychrometricAlgorithmStatic::computeHumidity(
-//			values->dryT, values->wetT);
-
+	values->getClimatVal(HUMIDITY)->setCurrent(PsychrometricAlgorithm::computeHumidity(values->getClimatVal(TEMPERATURE)->getCurrent(), values->wetT));
 }
-
 
 void THSensors::searchSensors() {
 	byte addr[8];

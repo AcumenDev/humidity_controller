@@ -5,19 +5,30 @@
 #include "inttypes.h"
 
 class Button {
-    unsigned long lastDebounceTime;
-    unsigned long debounceDelay;
+private:
+	unsigned long lastDebounceTime = 0;
 
-    bool buttonState;
-    bool lastButtonState;
+	unsigned long debounceDelay = 50;
 
-    byte buttonPin;
-    bool readPresed;
+	bool buttonState = false;
 
-  public:
-    Button(byte buttonPin);
+	bool lastButtonState = false;
 
-    void update(unsigned long currentMillis);
-    bool isPressed();
+	int buttonPin = -1;
+
+	uint8_t minVal = 0;
+	uint8_t maxVal = 0;
+
+	bool readPresed = false;
+
+	bool readKey();bool analog = false;
+
+public:
+	Button(uint8_t buttonPin);
+	Button(uint8_t buttonPin, uint8_t minVal, uint8_t maxVal);
+
+	void update(unsigned long currentMillis);
+
+	bool isPressed();
 };
 #endif

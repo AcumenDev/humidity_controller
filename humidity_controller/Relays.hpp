@@ -5,25 +5,15 @@
 #include "inttypes.h"
 
 class Relays {
-    uint8_t humidificationRelayPin;
-    uint8_t heatingRelayPin;
-    uint8_t coolingRelayPin;
-    uint8_t ventilationRelayPin;
+private:
+	uint8_t humidificationRelayPin;
+	uint8_t heatingRelayPin;
 public:
-    Relays(uint8_t humidificationRelayPin, uint8_t heatingRelayPin, uint8_t coolingRelayPin,
-           uint8_t ventilationRelayPin);
+	Relays(uint8_t humidificationRelayPin, uint8_t heatingRelayPin);
 
-    void humidification(bool val);
+	void humidification(bool val);
 
-    void heating(bool val);
-
-    void cooling(bool val);
-
-    void ventilation(bool val);
-
-    void draining(bool val);
-
-
+	void heating(bool val);
 };
 
 #endif

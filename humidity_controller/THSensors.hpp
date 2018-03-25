@@ -13,13 +13,12 @@ class THSensors: public IntervalWorkerBase {
 
 	OneWire *oneWire;
 	DallasTemperature *ds;
-////todo вынести в конфиг
-	DeviceAddress wetSensor = { 0x28, 0xFF, 0x7A, 0xC4, 0xB1, 0x17, 0x4, 0x5B };
-	DeviceAddress drySensor = { 0x28, 0xFF, 0x0, 0xC2, 0xB1, 0x17, 0x4, 0x82 };
-
+	uint8_t * wetSensorAdr;
+	uint8_t * drySensorAdr;
 	void searchSensors();
 public:
-	THSensors(int interval);
+	THSensors(uint8_t * wetSensorAdr, uint8_t * drySensorAdr, uint8_t pin,
+			int interval);
 	void work(Values *values, unsigned long currentMillis) override;
 };
 
