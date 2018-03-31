@@ -1,0 +1,13 @@
+//
+// Created by vst on 3/31/18.
+//
+
+#ifndef TEST_HUMIDITY_CONTROLLER_LIQUIDCRYSTAL_H
+#define TEST_HUMIDITY_CONTROLLER_LIQUIDCRYSTAL_H
+
+class LiquidCrystal {
+
+};
+
+
+#endif //TEST_HUMIDITY_CONTROLLER_LIQUIDCRYSTAL_H

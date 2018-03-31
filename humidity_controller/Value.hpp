@@ -20,11 +20,11 @@ public:
 		target = minTarget + ((maxTarget - minTarget) / 2);
 	}
 
-	int getTarget() {
+	const float  &getTarget() {
 		return target;
 	}
 
-	const float &getCurrent() {
+	const float  &getCurrent() {
 		return current;
 	}
 

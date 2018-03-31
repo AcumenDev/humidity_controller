@@ -5,7 +5,7 @@
 #ifndef TEST_CLIMATE_PAGE_BASE_HPP
 #define TEST_CLIMATE_PAGE_BASE_HPP
 
-#include "Display.hpp"
+
 
 template<typename D>
 class PageBase {
@@ -19,7 +19,7 @@ public:
 			name(name) {
 	}
 
-	virtual void render(const D * display){
+	virtual void render(D * display){
 
 	}
 

@@ -21,7 +21,7 @@ public:
         return changer->getChars();
     }
 
-     void render(const D * display) override{
+     void render( D * display) override{
 
     	// display->
      }

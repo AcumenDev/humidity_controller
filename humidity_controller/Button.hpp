@@ -21,7 +21,9 @@ private:
 
 	bool readPresed = false;
 
-	bool readKey();bool analog = false;
+	bool readKey();
+
+	bool analog = false;
 
 public:
 	Button(uint8_t buttonPin);
@@ -31,4 +33,7 @@ public:
 
 	bool isPressed();
 };
+
+
+
 #endif
