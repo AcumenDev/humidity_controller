@@ -37,3 +37,23 @@ size_t HardwareSerial::print(unsigned long item) {
 size_t HardwareSerial::println(int i) {
     cout << i << std::endl;
 }
+
+size_t HardwareSerial::print(unsigned int i) {
+    cout << i;
+}
+
+size_t HardwareSerial::print(unsigned char i, int) {
+    cout << i;
+}
+
+size_t HardwareSerial::print(int i, int) {
+    cout << i;
+}
+
+size_t HardwareSerial::print(unsigned int i, int) {
+    cout << i;
+}
+
+size_t HardwareSerial::print(long i, int) {
+    cout << i;
+}

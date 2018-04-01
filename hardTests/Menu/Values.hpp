@@ -4,7 +4,7 @@
 #include "Value.hpp"
 #include "Arduino.h"
 #include "Config.hpp"
-#include "EEPROMUtils.hpp"
+
 
 enum TYPE_CLIMATE_VALUE {
 	TEMPERATURE = 0, HUMIDITY = 1

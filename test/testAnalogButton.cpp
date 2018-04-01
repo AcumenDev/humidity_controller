@@ -21,9 +21,9 @@ int main() {
      buttonSelect = new Button(keysPin, 600, 800);
      */
 
-    Key keys[] = { Key(1, 100, 200), Key(2, 200, 400), Key(3, 600, 800) };
+    Key keys[] = {Key(1, 100, 200), Key(2, 200, 400), Key(3, 600, 800)};
 
-    AnalogButton* analogButton = new AnalogButton(1, keys, 3);
+    AnalogButton *analogButton = new AnalogButton(1, keys, 3);
 
     cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 
@@ -36,15 +36,15 @@ int main() {
         if (currentMillis / 1000 >= daySeconds * 1) {
             break;
         }
-        currentSeconds = duration_cast<milliseconds>(
-                system_clock::now().time_since_epoch()).count() / 1000;
+        currentSeconds = static_cast<unsigned long>(
+                duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count() / 1000);
 
         currentMillis += 1000;
 
         analogButton->update(currentMillis);
 
 
-        cout <<  analogButton->isPressed() << endl;
+        cout << analogButton->isPressed() << endl;
 
     }
     return 0;

@@ -1,4 +1,5 @@
 #include "THSensors.hpp"
+#include "DebugUtils.hpp"
 
 THSensors::THSensors(uint8_t * wetSensorAdr, uint8_t * drySensorAdr,
 		uint8_t pin, int interval) :
@@ -25,20 +26,22 @@ void THSensors::work(Values *values, unsigned long currentMillis) {
 
 void THSensors::searchSensors() {
 	byte addr[8];
-	Serial.println();
+	DEBUG_PRINTLN("")
 	int number = 0;
 	while (oneWire->search(addr)) {
-		Serial.print(++number);
-		Serial.print(" : ");
+		++number;
+		DEBUG_PRINT((int)number);
+		DEBUG_PRINT(" : ")
 		for (int i = 0; i < 8; i++) {
 			Serial.print(' ');
-			Serial.print(addr[i], HEX);
+			DEBUG_PRINT(' ')
+			DEBUG_PRINT(addr[i], HEX)
 		}
-		Serial.println();
+		DEBUG_PRINTLN("")
 	}
 
 	if (number == 0) {
-		Serial.println("Sensors not found!");
+		DEBUG_PRINTLN("Sensors not found!")
 	}
 
 }

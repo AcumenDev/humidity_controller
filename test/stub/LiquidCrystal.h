@@ -5,8 +5,20 @@
 #ifndef TEST_HUMIDITY_CONTROLLER_LIQUIDCRYSTAL_H
 #define TEST_HUMIDITY_CONTROLLER_LIQUIDCRYSTAL_H
 
-class LiquidCrystal {
+#include "HardwareSerial.hpp"
 
+class LiquidCrystal : public HardwareSerial {
+public:
+    LiquidCrystal(int, int, int, int, int, int) {}
+
+    void begin(int, int) {
+
+    }
+
+
+    void setCursor(int, int) {
+
+    }
 };
 
 

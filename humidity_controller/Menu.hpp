@@ -50,6 +50,7 @@ public:
 	void enter() {
 		changeTimestamp = millis();
 		if (currentPage == homePage) {
+			Serial.println("currentPage = menuPage");
 			currentPage = menuPage;
 		} else {
 			PageBase<D> *newCur = currentPage->enter();

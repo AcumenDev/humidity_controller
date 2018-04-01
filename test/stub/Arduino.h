@@ -12,13 +12,17 @@
 #include "HardwareSerial.hpp"
 #include "../../humidity_controller/Config.hpp"
 
+#define PROGMEM
 
-#define A0 22
-#define A1 22
+
+
+
+#define A0 20
+#define A1 21
 #define A2 22
-#define A3 22
-#define A4 22
-#define A5 22
+#define A3 23
+#define A4 24
+#define A5 25
 
 
 typedef uint8_t byte;

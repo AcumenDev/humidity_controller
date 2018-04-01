@@ -5,27 +5,27 @@ AnalogButton::AnalogButton(uint8_t buttonPin, Key *keys, int size) {
     this->buttonPin = buttonPin;
     this->keys = keys;
     this->size = size;
-//    Serial.println("AnalogButton");
+    Serial.println("AnalogButton");
 }
 
 int AnalogButton::readKey() {
 
     int analogValue = analogRead(buttonPin);
-   // Serial.print("minval ");
+    Serial.print("minval ");
     for (int i = 0; i < size; i++) {
 
-     //   Serial.print("minval ");
+        Serial.print("minval ");
 
-     //   Serial.print(keys[i].minVal);
-     //   Serial.print(" > ");
-     //   Serial.print(analogValue);
-     //   Serial.print(" < ");
-     //   Serial.println(keys[i].maxVal);
+        Serial.print(keys[i].minVal);
+        Serial.print(" > ");
+        Serial.print(analogValue);
+        Serial.print(" < ");
+        Serial.println(keys[i].maxVal);
         if (analogValue > keys[i].minVal && analogValue < keys[i].maxVal) {
-       //     Serial.println("true");
+            Serial.println("true");
             return keys[i].id;
         }else{
-      //      Serial.println("false");
+            Serial.println("false");
         }
     }
 
@@ -36,7 +36,7 @@ int AnalogButton::readKey() {
 void AnalogButton::update(unsigned long currentMillis) {
 
     int reading = readKey();
-   // Serial.println(reading);
+    Serial.println(reading);
 
     if (reading != lastButtonState) {
         lastDebounceTime = currentMillis;
@@ -53,13 +53,12 @@ void AnalogButton::update(unsigned long currentMillis) {
 }
 
 int AnalogButton::isPressed() {
-    if(!readPresed){
+    if (buttonState != -1) {
         readPresed = true;
         int state = buttonState;
         buttonState = -1;
         return state;
     }
-
     return -1;
 }
 

@@ -10,7 +10,7 @@ Keys::Keys(uint8_t keysPin, AnalogButton *analogButton, Menu<LiquidCrystal> *men
      */
 
 
-    DEBUG_PRINT("Keys")
+   // DEBUG_PRINT("Keys");
     this->analogButton = analogButton;
 
     this->menu = menu;

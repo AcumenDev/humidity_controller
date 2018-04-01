@@ -26,7 +26,7 @@ void Display::update(Values *values, unsigned long currentMillis) {
 }
 
 void Display::render(Values *values) {
-	lcd->setCursor(0, 0);
+/*	lcd->setCursor(0, 0);
 	lcd->print(" Temp: ");
 	lcd->print(
 			values->getClimatVal(TYPE_CLIMATE_VALUE::TEMPERATURE)->getCurrent());
@@ -35,5 +35,5 @@ void Display::render(Values *values) {
 	lcd->print("Humidity: ");
 	lcd->print(
 			values->getClimatVal(TYPE_CLIMATE_VALUE::HUMIDITY)->getCurrent());
-	lcd->println(" %    ");
+	lcd->println(" %    ");*/
 }

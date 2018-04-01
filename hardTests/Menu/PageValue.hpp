@@ -18,7 +18,6 @@ public:
         this->changer = changer;
     }
 
-
     virtual void render(D *display) override {
         display->setCursor(0, 0);
         /*display->print("T:");
