@@ -24,7 +24,7 @@ public:
 		display->setCursor(0, 0);
 		display->print("T:");
 		display->print(values->getClimatVal(TYPE_CLIMATE_VALUE::TEMPERATURE)->getCurrent());
-		display->println("->");
+		display->print("->");
 		display->print(values->getClimatVal(TYPE_CLIMATE_VALUE::TEMPERATURE)->getTarget());
 		display->println("C");
 
@@ -32,7 +32,7 @@ public:
 		display->setCursor(0, 1);
 		display->print("H:");
 		display->print(values->getClimatVal(TYPE_CLIMATE_VALUE::HUMIDITY)->getCurrent());
-		display->println("->");
+		display->print("->");
 		display->print(values->getClimatVal(TYPE_CLIMATE_VALUE::HUMIDITY)->getTarget());
 		display->println("%");
 	}
