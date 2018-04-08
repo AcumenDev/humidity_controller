@@ -6,25 +6,18 @@
 #define TEST_CLIMATE_PAGE_BASE_HPP
 
 
-template<typename D>
 class PageBase {
-private:
-    const char *name;
+
 public:
     PageBase() {
     }
 
-    PageBase(const char *name) : name(name) {
-    }
-
-    virtual void render(D *display) {
+    virtual void render(LiquidCrystal *display) {
 
     }
 
     //virtual void void changeEvent(T event) = 0;
-    virtual const char *getName() const {
-        return name;
-    }
+    virtual const char *getName() const =0;
 
     virtual void up() {
     }

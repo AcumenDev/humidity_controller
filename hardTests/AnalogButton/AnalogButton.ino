@@ -29,5 +29,5 @@ void loop() {
         default:
             break;
     }
-    delay(1000);
+   // delay(1000);
 }

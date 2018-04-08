@@ -13,11 +13,11 @@ class THSensors: public IntervalWorkerBase {
 
 	OneWire *oneWire;
 	DallasTemperature *ds;
-	uint8_t * wetSensorAdr;
-	uint8_t * drySensorAdr;
+	const	uint8_t * wetSensorAdr;
+	const	uint8_t * drySensorAdr;
 	void searchSensors();
 public:
-	THSensors(uint8_t * wetSensorAdr, uint8_t * drySensorAdr, uint8_t pin,
+	THSensors(const uint8_t * wetSensorAdr,const uint8_t * drySensorAdr, uint8_t pin,
 			int interval);
 	void work(Values *values, unsigned long currentMillis) override;
 };

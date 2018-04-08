@@ -5,11 +5,16 @@
 #include "Relays.hpp"
 #include "IntervalWorkerBase.hpp"
 
-class HumidityControl: public IntervalWorkerBase {
+class THControl: public IntervalWorkerBase {
 private:
 	Relays *relays;
+
+
+	void temperature(Value * value);
+	void humidity(Value * value);
+
 public:
-	HumidityControl(Relays *relays, int interval);
+	THControl(Relays *relays, int interval);
 
 	void work(Values *values, unsigned long millis) override;
 };

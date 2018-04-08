@@ -22,7 +22,7 @@ private:
 
     int size;
 
-    bool readPresed = false;
+    bool presed = false;
 
     int readKey();
 

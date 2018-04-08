@@ -6,7 +6,7 @@
 #define TEST_CLIMATE_CHANGER_HPP
 
 
-class Changer {
+class  Changer {
 
 public:
     virtual const char *getChars() =0;

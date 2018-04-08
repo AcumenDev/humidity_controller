@@ -13,11 +13,12 @@ public:
 	float target = 0;
 	float gisteris = 1;
 
-	Value(int minTarget, int maxTarget, float gisteris) {
+	Value(float target, int minTarget, int maxTarget, float gisteris) {
 		this->minTarget = minTarget;
 		this->maxTarget = maxTarget;
 		this->gisteris = gisteris;
-		target = minTarget + ((maxTarget - minTarget) / 2);
+		this->target = target;
+		//target = minTarget + ((maxTarget - minTarget) / 2);
 	}
 
 	const float &getTarget() {

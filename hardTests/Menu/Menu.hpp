@@ -39,19 +39,26 @@ public:
     }
 
     void up() {
+        Serial.println("up");
+        delay(100);
         changeTimestamp = millis();
         currentPage->up();
     }
 
     void down() {
+        Serial.println("down");
+        delay(100);
         changeTimestamp = millis();
         currentPage->down();
     }
 
     void enter() {
+        Serial.println("enter");
+        delay(100);
         changeTimestamp = millis();
         if (currentPage == homePage) {
             Serial.println("currentPage = menuPage");
+            delay(100);
             currentPage = menuPage;
         } else {
             PageBase<D> *newCur = currentPage->enter();

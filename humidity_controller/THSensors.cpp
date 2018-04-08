@@ -1,7 +1,7 @@
 #include "THSensors.hpp"
 #include "DebugUtils.hpp"
 
-THSensors::THSensors(uint8_t * wetSensorAdr, uint8_t * drySensorAdr,
+THSensors::THSensors(const uint8_t * wetSensorAdr, const uint8_t * drySensorAdr,
 		uint8_t pin, int interval) :
 		IntervalWorkerBase(interval) {
 

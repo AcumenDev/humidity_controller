@@ -8,7 +8,6 @@
 #include <LiquidCrystal.h>
 #include "THSensors.hpp"
 #include "Keys.hpp"
-#include "Display.hpp"
 #include "Config.hpp"
 #include "Monitoring.hpp"
 #include "Relays.hpp"
@@ -18,20 +17,19 @@
 #include "PageValue.hpp"
 #include "FloatChanger.hpp"
 #include "HomePage.hpp"
-#include "HumidityControl.hpp"
+#include "THControl.hpp"
 
 class HumidityController {
     Values *values;
     THSensors *thSensors;
     Keys *keys;
-//Display *display;
     Monitoring *monitoring;
     Relays *relays;
-    HumidityControl *humidityControl;
-    Menu<LiquidCrystal> *menu;
+    THControl *thControl;
+    Menu *menu;
     AnalogButton *analogButton;
 
-    Menu<LiquidCrystal> *buildMenu(Values *values, LiquidCrystal *display);
+    Menu *buildMenu(Values *values, LiquidCrystal *display);
 
 public:
     HumidityController() {}

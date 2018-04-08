@@ -20,10 +20,11 @@ set(SOURCE_FILES_CLIMATE
         ../humidity_controller/THSensors.cpp
         ../humidity_controller/IntervalWorkerBase.cpp
         ../humidity_controller/Monitoring.cpp
-        ../humidity_controller/HumidityControl.cpp
-        ../humidity_controller/Changer.cpp
+        ../humidity_controller/THControl.cpp
         ../humidity_controller/FloatChanger.cpp)
 
 
 set(SOURCE_FILES testAnalogButton.cpp ../humidity_controller/HumidityController.cpp ../humidity_controller/HumidityController.hpp stub/OneWire.h stub/DallasTemperature.h ../hardTests/AnalogButton/UtilsButton.hpp)
 add_executable(humidity_controller ${SOURCE_FILES} ${SOURCE_FILES_CLIMATE} ) #[[ ]]
+
+

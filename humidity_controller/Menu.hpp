@@ -5,61 +5,76 @@
 #include "PageBase.hpp"
 #include "PageGroup.hpp"
 
-template<typename D>
-class Menu: public IntervalWorkerBase {
-private:
-	PageBase<D> *currentPage = nullptr;
-	PageBase<D> *previousPage = nullptr;
-	PageBase<D> *homePage = nullptr;
-	PageBase<D> *menuPage = nullptr;
-	D * display;
 
-	unsigned long changeTimestamp;
-	unsigned int returnToHomePageTime = 5000;
+class Menu : public IntervalWorkerBase {
+private:
+    PageBase *currentPage = nullptr;
+    PageBase *previousPage = nullptr;
+    PageBase *homePage = nullptr;
+    PageBase *menuPage = nullptr;
+    LiquidCrystal *display;
+
+    unsigned long changeTimestamp;
+    unsigned int returnToHomePageTime = 5000;
 
 public:
-	Menu(D *display, int interval, PageGroup<D> *menuPage,
-			PageBase<D> *homePage) :
-			IntervalWorkerBase(interval) {
-		this->menuPage = menuPage;
-		this->currentPage = homePage;
-		this->homePage = homePage;
-		this->display = display;
-	}
+    Menu(LiquidCrystal *display, int interval, PageGroup *menuPage,  PageBase *homePage) :
+            IntervalWorkerBase(interval) {
+        this->menuPage = menuPage;
+        this->currentPage = homePage;
+        this->homePage = homePage;
+        this->display = display;
+    }
 
-	const PageBase<D> *getCurrentPage() const {
-		return currentPage;
-	}
-	void work(Values *values, unsigned long currentMillis) {
-		if (currentMillis - changeTimestamp >= returnToHomePageTime) {
-			currentPage = homePage;
-		}
-		currentPage->render(display);
-	}
+    const PageBase *getCurrentPage() const {
+        return currentPage;
+    }
 
-	void up() {
-		changeTimestamp = millis();
-		currentPage->up();
-	}
+    void work(Values *values, unsigned long currentMillis) {
+        if (currentPage != homePage) {
+            if (currentMillis - changeTimestamp >= returnToHomePageTime) {
+                currentPage = homePage;
+                Serial.println("menu returnToHomePage");
+            }
+        }
+        currentPage->render(display);
+    }
 
-	void down() {
-		changeTimestamp = millis();
-		currentPage->down();
-	}
+    void up() {
+        changeTimestamp = millis();
+        Serial.println("menu up");
+        currentPage->up();
+    }
 
-	void enter() {
-		changeTimestamp = millis();
-		if (currentPage == homePage) {
-			Serial.println("currentPage = menuPage");
-			currentPage = menuPage;
-		} else {
-			PageBase<D> *newCur = currentPage->enter();
-			if (newCur != nullptr) {
-				previousPage = currentPage;
-				currentPage = newCur;
-			}
-		}
-	}
+    void down() {
+        changeTimestamp = millis();
+        Serial.println("menu down");
+        currentPage->down();
+    }
+
+    void enter() {
+        Serial.println("Menu enter");
+        delay(100);
+        changeTimestamp = millis();
+        if (currentPage == homePage) {
+            Serial.println("Menu currentPage = menuPage");
+            delay(100);
+            currentPage = menuPage;
+        } else {
+            Serial.println("Menu menuPage = next menuPage");
+            delay(100);
+            PageBase *newCur = currentPage->enter();
+            if (newCur != nullptr) {
+                previousPage = currentPage;
+                currentPage = newCur;
+            }
+        }
+    }
+
+
+    virtual const char *getName() const {
+        return nullptr;
+    }
 };
 
 #endif //TEST_CLIMATE_MENU_HPP

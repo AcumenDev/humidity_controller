@@ -6,60 +6,75 @@
 #define TEST_CLIMATE_PAGEGROUP_HPP
 
 #include "PageBase.hpp"
-template<typename D>
-class PageGroup: public PageBase<D> {
+
+
+class PageGroup : public PageBase {
 private:
-	PageBase<D> **pages;
-	byte size;
-	int current = 0;
+    PageBase **pages;
+    byte size;
+    uint8_t current = 0;
+    const char *name;
 public:
 
-	PageGroup(PageBase<D> **pages, byte size) {
-		this->pages = pages;
-		this->size = size;
-	}
+    PageGroup(PageBase **pages, byte size) {
+        this->pages = pages;
+        this->size = size;
+    }
 
-	PageGroup(const char *name, PageBase<D> **pages, byte size) :
-			PageBase<D>(name) {
-		this->pages = pages;
-		this->size = size;
-	}
+    PageGroup(const char *name, PageBase **pages, byte size) {
+        this->name = name;
+        this->pages = pages;
+        this->size = size;
+    }
 
-	// void add(PageBase *pBase);
-	const PageBase<D> *getCurrentPage() {
-		return pages[current];
-	}
+    const char *getName() const {
+        return name;
+    }
 
-	 void render(D * display){
-		display->setCursor(0, 0);
-		/*display->print("T:");
-		display->print(values->getClimatVal(TYPE_CLIMATE_VALUE::TEMPERATURE)->getCurrent());*/
-		display->println(pages[current]->getName());
-	}
 
-	void up() {
-		if (current >= size - 1) {
-			current = 0;
-		} else {
-			current++;
-		}
-	}
+    const PageBase *getCurrentPage() {
+        return pages[current];
+    }
 
-	void down() {
-		if (current <= 0) {
-			current = size - 1;
-		} else {
-			current--;
-		}
-	}
+    void render(LiquidCrystal *display) {
+        Serial.print("PageGroup \"");
 
-	PageBase<D> *enter() {
-		return pages[current];
-	}
+        Serial.print(name);
+        Serial.println("\" render");
+        // Serial.println(pages);
+        Serial.println(current);
+        delay(100);
+        Serial.println((byte) pages[current]);
+        //   Serial.println(pages[current]->getName());
 
-private:
-	//  void render(const Display *dispay) override;
 
+        // display->setCursor(0, 0);
+        // display->print(pages[current]->getName());
+    }
+
+    void up() {
+        if (current >= size - 1) {
+            current = 0;
+        } else {
+            current++;
+        }
+    }
+
+    void down() {
+        if (current <= 0) {
+            current = size - 1;
+        } else {
+            current--;
+        }
+    }
+
+    PageBase *enter() {
+        Serial.print("PageGroup ");
+        Serial.print(current);
+        Serial.println(" enter");
+
+        return pages[current];
+    }
 };
 
 #endif //TEST_CLIMATE_PAGEGROUP_HPP

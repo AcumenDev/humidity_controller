@@ -17,7 +17,7 @@ public:
 
     }
 
-    float getTempC(uint8_t *adr) {
+    float getTempC(const uint8_t *adr) {
         return 0;
     }
 };

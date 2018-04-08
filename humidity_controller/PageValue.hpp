@@ -9,23 +9,29 @@
 #include "PageBase.hpp"
 #include "Changer.hpp"
 
-template<typename D>
-class PageValue : public PageBase<D> {
+
+class PageValue : public PageBase {
 private:
     Changer *changer;
+    const char *name;
 public:
-    PageValue(const char *name, Changer *changer) : PageBase<D>(name) {
+    PageValue(const char *name, Changer *changer) {
+        this->name = name;
         this->changer = changer;
     }
 
-
-    virtual void render(D *display) override {
-        display->setCursor(0, 0);
-        /*display->print("T:");
-        display->print(values->getClimatVal(TYPE_CLIMATE_VALUE::TEMPERATURE)->getCurrent());*/
-        display->println(changer->getChars());
+    const char *getName() const {
+        return name;
     }
 
+
+    virtual void render(LiquidCrystal *display) override {
+
+        display->setCursor(0, 0);
+        display->print(changer->getChars());
+       // display->print(values->getClimatVal(TYPE_CLIMATE_VALUE::TEMPERATURE)->getCurrent());
+        //   display->println(changer->getChars());
+    }
 
     void up() override {
         changer->up();

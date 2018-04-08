@@ -10,9 +10,9 @@
 class Keys {
 
     AnalogButton *analogButton;
-    Menu<LiquidCrystal> *menu;
+    Menu *menu;
 public:
-    Keys(uint8_t keysPin, AnalogButton *analogButton, Menu<LiquidCrystal> *menu);
+    Keys(uint8_t keysPin, AnalogButton *analogButton, Menu *menu);
 
     void update(Values *values, unsigned long currentMillis);
 };
