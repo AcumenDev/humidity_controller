@@ -12,13 +12,13 @@ void Keys::update(Values *values, unsigned long currentMillis) {
     int keyPres = analogButton->isPressed();
     switch (keyPres) {
         case 1:
-            menu->up();
+            menu->up(currentMillis);
             break;
         case 2:
-            menu->down();
+            menu->down(currentMillis);
             break;
         case 3:
-            menu->enter();
+            menu->enter(currentMillis);
             break;
         default:
             break;

@@ -5,10 +5,9 @@
 #include "PageGroup.hpp"
 #include "Display.hpp"
 #include "Values.hpp"
-#include "IntervalWorkerBase.hpp"
 
 
-class Menu  : public IntervalWorkerBase{
+class Menu  {
 private:
     PageBase *currentPage = nullptr;
     PageBase *previousPage = nullptr;
@@ -20,7 +19,7 @@ private:
     unsigned int returnToHomePageTime = 5000;
 
 public:
-    Menu(Display *display, int interval, PageGroup *menuPage, PageBase *homePage) :IntervalWorkerBase(interval){
+    Menu(Display *display, int interval, PageGroup *menuPage, PageBase *homePage) {
         this->menuPage = menuPage;
         this->currentPage = homePage;
         this->homePage = homePage;

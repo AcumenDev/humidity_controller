@@ -6,12 +6,13 @@
 #define TEST_HUMIDITY_CONTROLLER_HUMIDITYCONTROLLER_HPP
 
 #include <LiquidCrystal.h>
+#include "DisplayLiquidCrystal.hpp"
 #include "THSensors.hpp"
 #include "Keys.hpp"
 #include "Config.hpp"
 #include "Monitoring.hpp"
 #include "Relays.hpp"
-
+#include "Display.hpp"
 #include "Menu.hpp"
 #include "PageGroup.hpp"
 #include "PageValue.hpp"
@@ -29,7 +30,7 @@ class HumidityController {
     Menu *menu;
     AnalogButton *analogButton;
 
-    Menu *buildMenu(Values *values, LiquidCrystal *display);
+    Menu *buildMenu(Values *values, Display *display);
 
 public:
     HumidityController() {}

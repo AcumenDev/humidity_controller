@@ -7,14 +7,12 @@
 //============================================================================
 #include <chrono>
 #include <iostream>
-#include "../humidity_controller/AnalogButton.hpp"
 
 using namespace std;
 using namespace std::chrono;
 static const int daySeconds = 86400;
 
 int main() {
-
 
 
 
@@ -36,10 +34,10 @@ int main() {
 
         currentMillis += 1000;
 
-        analogButton->update(currentMillis);
+       // analogButton->update(currentMillis);
 
 
-        cout << analogButton->isPressed() << endl;
+    //    cout << analogButton->isPressed() << endl;
 
     }
     return 0;

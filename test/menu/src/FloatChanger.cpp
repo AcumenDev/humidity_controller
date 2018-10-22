@@ -5,6 +5,7 @@
 #include "FloatChanger.hpp"
 #include <stdlib.h>
 #include <Arduino.h>
+#include <cstring>
 
 FloatChanger::FloatChanger(float *value, float min, float max, float step) {
     this->value = value;

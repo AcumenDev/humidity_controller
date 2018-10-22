@@ -1,10 +1,7 @@
 #ifndef Config_HPP_
 #define Config_HPP_
 
-
 #include "Arduino.h"
-
-
 #define CLIMATE_DEBUG
 
 
