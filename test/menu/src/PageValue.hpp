@@ -20,17 +20,15 @@ public:
         this->changer = changer;
     }
 
-    const char *getName() const {
+    const char *getName() const override {
         return name;
     }
 
 
-    virtual void render(LiquidCrystal *display) override {
+    virtual void render(Display *display) override {
 
         display->setCursor(0, 0);
         display->print(changer->getChars());
-       // display->print(values->getClimatVal(TYPE_CLIMATE_VALUE::TEMPERATURE)->getCurrent());
-        //   display->println(changer->getChars());
     }
 
     void up() override {

@@ -11,11 +11,6 @@
 #include "Config.hpp"
 #include "Monitoring.hpp"
 #include "Relays.hpp"
-
-#include "Menu.hpp"
-#include "PageGroup.hpp"
-#include "PageValue.hpp"
-#include "FloatChanger.hpp"
 #include "HomePage.hpp"
 #include "THControl.hpp"
 
@@ -26,10 +21,8 @@ class HumidityController {
     Monitoring *monitoring;
     Relays *relays;
     THControl *thControl;
-    Menu *menu;
     AnalogButton *analogButton;
-
-    Menu *buildMenu(Values *values, LiquidCrystal *display);
+    HomePage * homePage;
 
 public:
     HumidityController() {}

@@ -6,13 +6,15 @@
 #define TEST_CLIMATE_PAGE_BASE_HPP
 
 
+#include "Display.hpp"
+
 class PageBase {
 
 public:
     PageBase() {
     }
 
-    virtual void render(LiquidCrystal *display) {
+    virtual void render(Display *display) {
 
     }
 

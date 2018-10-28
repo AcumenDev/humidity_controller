@@ -4,15 +4,13 @@
 #include "Values.hpp"
 #include "Arduino.h"
 #include "DebugUtils.hpp"
-#include "Menu.hpp"
 #include "AnalogButton.hpp"
 
 class Keys {
 
     AnalogButton *analogButton;
-    Menu *menu;
 public:
-    Keys(uint8_t keysPin, AnalogButton *analogButton, Menu *menu);
+    Keys(uint8_t keysPin, AnalogButton *analogButton);
 
     void update(Values *values, unsigned long currentMillis);
 };

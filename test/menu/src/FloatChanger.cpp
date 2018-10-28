@@ -5,6 +5,7 @@
 #include "FloatChanger.hpp"
 #include <stdlib.h>
 #include <Arduino.h>
+#include <cstring>
 
 FloatChanger::FloatChanger(float *value, float min, float max, float step) {
     this->value = value;
@@ -15,6 +16,7 @@ FloatChanger::FloatChanger(float *value, float min, float max, float step) {
 
 const char *FloatChanger::getChars() {
     char buf[34];
+  //  memset(buf, 0, 34);
     return dtostrf(*value, 2, 2, buf);
 }
 

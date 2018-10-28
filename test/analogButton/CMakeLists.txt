@@ -24,7 +24,7 @@ set(SOURCE_FILES_CLIMATE
         ../humidity_controller/FloatChanger.cpp)
 
 
-set(SOURCE_FILES testAnalogButton.cpp ../humidity_controller/HumidityController.cpp ../humidity_controller/HumidityController.hpp stub/OneWire.h stub/DallasTemperature.h ../hardTests/AnalogButton/UtilsButton.hpp)
+set(SOURCE_FILES TestMenu.cpp ../humidity_controller/HumidityController.cpp ../humidity_controller/HumidityController.hpp stub/OneWire.h stub/DallasTemperature.h ../hardTests/AnalogButton/UtilsButton.hpp)
 add_executable(humidity_controller ${SOURCE_FILES} ${SOURCE_FILES_CLIMATE} ) #[[ ]]
 
 

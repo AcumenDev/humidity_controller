@@ -6,14 +6,12 @@
 #define TEST_CLIMATE_CHANGER_HPP
 
 
-class  Changer {
+class Changer {
 
 public:
-    virtual const char *getChars() =0;
-
-    virtual void up() =0;
-
-    virtual void down()=0;
+    virtual const char *getChars() = 0;
+    virtual void up() = 0;
+    virtual void down() = 0;
 };
 
 

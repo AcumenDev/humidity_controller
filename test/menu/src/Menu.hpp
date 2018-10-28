@@ -1,25 +1,25 @@
 #ifndef TEST_CLIMATE_MENU_HPP
 #define TEST_CLIMATE_MENU_HPP
 
-#include "IntervalWorkerBase.hpp"
 #include "PageBase.hpp"
 #include "PageGroup.hpp"
+#include "Display.hpp"
+#include "Values.hpp"
 
 
-class Menu : public IntervalWorkerBase {
+class Menu  {
 private:
     PageBase *currentPage = nullptr;
     PageBase *previousPage = nullptr;
     PageBase *homePage = nullptr;
     PageBase *menuPage = nullptr;
-    LiquidCrystal *display;
+    Display *display;
 
     unsigned long changeTimestamp;
     unsigned int returnToHomePageTime = 5000;
 
 public:
-    Menu(LiquidCrystal *display, int interval, PageGroup *menuPage,  PageBase *homePage) :
-            IntervalWorkerBase(interval) {
+    Menu(Display *display, int interval, PageGroup *menuPage, PageBase *homePage) {
         this->menuPage = menuPage;
         this->currentPage = homePage;
         this->homePage = homePage;
@@ -34,34 +34,34 @@ public:
         if (currentPage != homePage) {
             if (currentMillis - changeTimestamp >= returnToHomePageTime) {
                 currentPage = homePage;
-                Serial.println("menu returnToHomePage");
+                Serial.println("[menu returnToHomePage]");
             }
         }
         currentPage->render(display);
     }
 
-    void up() {
-        changeTimestamp = millis();
-        Serial.println("menu up");
+    void up(unsigned long currentMillis) {
+        changeTimestamp = currentMillis;
+        Serial.println("[menu up]");
         currentPage->up();
     }
 
-    void down() {
-        changeTimestamp = millis();
-        Serial.println("menu down");
+    void down(unsigned long currentMillis) {
+        changeTimestamp = currentMillis;
+        Serial.println("[menu down]");
         currentPage->down();
     }
 
-    void enter() {
-        Serial.println("Menu enter");
+    void enter(unsigned long currentMillis) {
+        Serial.println("[menu enter]");
         delay(100);
-        changeTimestamp = millis();
+        changeTimestamp = currentMillis;
         if (currentPage == homePage) {
-            Serial.println("Menu currentPage = menuPage");
+            Serial.println("[Menu currentPage = menuPage]");
             delay(100);
             currentPage = menuPage;
         } else {
-            Serial.println("Menu menuPage = next menuPage");
+            Serial.println("[Menu menuPage = next menuPage]");
             delay(100);
             PageBase *newCur = currentPage->enter();
             if (newCur != nullptr) {
