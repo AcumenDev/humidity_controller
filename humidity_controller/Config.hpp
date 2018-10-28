@@ -62,4 +62,14 @@ const uint8_t DRY_SENSOR_ADR[8] = { 0x28, 0xFF, 0x0, 0xC2, 0xB1, 0x17, 0x4, 0x82
 
 
 
+////Название кнопок
+#define BUTTON_UP 1
+#define BUTTON_DOWN 2
+#define BUTTON_LEFT 3
+#define BUTTON_RIGHT 4
+
+
+
+
+
 #endif

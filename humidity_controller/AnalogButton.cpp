@@ -10,7 +10,7 @@ AnalogButton::AnalogButton(uint8_t buttonPin, Key *keys, int size) {
 int AnalogButton::readKey() {
     int analogValue = analogRead(buttonPin);
     for (int i = 0; i < size; i++) {
-        if (analogValue > keys[i].minVal && analogValue < keys[i].maxVal) {
+        if (analogValue >= keys[i].minVal && analogValue < keys[i].maxVal) {
             return keys[i].id;
         }else{
         }
@@ -27,7 +27,7 @@ void AnalogButton::update(unsigned long currentMillis) {
         lastDebounceTime = currentMillis;
     }
 
-    if (lastDebounceTime!=0 &&  (currentMillis - lastDebounceTime) > debounceDelay && presed==false) {
+    if (lastDebounceTime!=0 &&  (currentMillis - lastDebounceTime) > debounceDelay && presed ==false) {
         buttonState = reading;
         lastDebounceTime = 0;
         if(reading!=-1) {

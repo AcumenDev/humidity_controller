@@ -8,21 +8,20 @@
 #ifndef HOMEPAGE_HPP_
 #define HOMEPAGE_HPP_
 
-#include "Display.hpp"
 #include "Values.hpp"
-#include "PageBase.hpp"
 
 
-class HomePage : public PageBase {
+class HomePage {
 private:
     Values *values;
+    LiquidCrystal *display;
 public:
-    HomePage(Values *values) {
+    HomePage(LiquidCrystal *display, Values *values) {
+        this->display = display;
         this->values = values;
     }
 
-    void render(Display *display) {
-
+    void render() {
         display->setCursor(0, 0);
         display->print("T:");
         display->print(values->getClimatVal(TYPE_CLIMATE_VALUE::TEMPERATURE)->getCurrent());
@@ -39,10 +38,6 @@ public:
         display->print("->");
         display->print(values->getClimatVal(TYPE_CLIMATE_VALUE::HUMIDITY)->getTarget());
         display->print("%");
-    }
-
-    virtual const char *getName() const {
-        return nullptr;
     }
 };
 

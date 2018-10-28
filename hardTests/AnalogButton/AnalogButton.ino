@@ -12,22 +12,32 @@ void setup() {
 }
 
 void loop() {
+
+///left 480
+///right 0
+//up 131
+//down 306
+//sel 721
+
+  
   //  Serial.println("!");
     // put your main code here, to run repeatedly:
-    analogButton->update(millis());
 
-    int keyPres = analogButton->isPressed();
+    Serial.println(analogRead(A0));
+   // analogButton->update(millis());
+
+ //   int keyPres = analogButton->isPressed();
 
   //  Serial.println(keyPres);
-    switch (keyPres) {
-        case 1: Serial.println("+");
-            break;
-        case 2: Serial.println("-");
-            break;
-        case 3: Serial.println("sel");
-            break;
-        default:
-            break;
-    }
+ //   switch (keyPres) {
+  //      case 1: Serial.println("+");
+ //           break;
+ //       case 2: Serial.println("-");
+ //           break;
+ //       case 3: Serial.println("sel");
+ //           break;
+  //      default:
+ //           break;
+ //   }
    // delay(1000);
 }
